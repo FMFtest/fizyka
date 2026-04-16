@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -6,7 +7,6 @@
   <title>Sprawdzian z Fizyki</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
-
     :root {
       --bg: #f0f2f5;
       --surface: #ffffff;
@@ -20,11 +20,8 @@
       --muted: #6b7280;
       --radius: 14px;
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; }
-
-    /* HEADER */
     header { background:var(--text); color:#fff; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; position:sticky; top:0; z-index:100; }
     .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:16px; white-space:nowrap; }
     .logo span { color:#60a5fa; }
@@ -34,54 +31,36 @@
     .timer.danger { color:#f87171; animation:blink .7s infinite; }
     .badge { display:flex; align-items:center; gap:6px; background:rgba(224,36,36,0.15); border:1px solid rgba(224,36,36,0.3); border-radius:100px; padding:5px 12px; font-size:12px; font-weight:500; color:#f87171; white-space:nowrap; }
     .dot { width:7px; height:7px; border-radius:50%; background:#f87171; animation:blink 1.2s infinite; flex-shrink:0; }
-
-    /* MAIN */
     main { flex:1; padding:28px 16px 48px; display:flex; flex-direction:column; align-items:center; gap:24px; }
     .card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:28px; width:100%; max-width:760px; }
-
-    /* TITLE */
     .title-card { background:var(--text); color:#fff; border:none; padding:32px 28px; }
     .title-card .subject { font-family:'Syne',sans-serif; font-size:26px; font-weight:800; margin-bottom:8px; }
     .title-card .topics  { font-size:13px; color:#9ca3af; line-height:1.6; margin-bottom:18px; }
     .meta-row  { display:flex; gap:16px; flex-wrap:wrap; }
     .meta-pill { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); border-radius:8px; padding:8px 14px; font-size:13px; font-weight:500; }
     .meta-pill strong { color:#60a5fa; }
-
-    /* SCALE */
     .card-title { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; margin-bottom:16px; }
     .scale-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-top:14px; }
     .scale-cell { background:var(--surface2); border:1px solid var(--border); border-radius:8px; text-align:center; padding:8px 4px; }
     .scale-cell .pts   { font-size:11px; color:var(--muted); }
     .scale-cell .grade { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; color:var(--accent); }
-
-    /* FIELDS */
     .fields-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
     @media(max-width:500px){ .fields-row{ grid-template-columns:1fr; } }
     label { display:flex; flex-direction:column; gap:6px; font-size:13px; font-weight:500; color:var(--muted); }
     label input { font-family:'DM Sans',sans-serif; font-size:15px; padding:11px 14px; border:1.5px solid var(--border); border-radius:10px; outline:none; transition:border-color .2s; background:var(--surface2); color:var(--text); }
     label input:focus { border-color:var(--accent); background:#fff; }
     label input.error { border-color:var(--danger); }
-
-    /* START BUTTON */
     .btn-start { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; background:var(--accent); color:#fff; border:none; border-radius:12px; padding:16px 48px; cursor:pointer; transition:opacity .2s, transform .15s; width:100%; margin-top:8px; }
     .btn-start:hover    { opacity:.88; transform:translateY(-1px); }
     .btn-start:disabled { opacity:.35; cursor:not-allowed; transform:none; }
-
-    /* PROGRESS BAR */
     .progress-wrap { width:100%; max-width:760px; }
     .progress-info { display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-bottom:8px; font-weight:500; }
     .progress-bar  { height:6px; background:var(--border); border-radius:100px; overflow:hidden; }
     .progress-fill { height:100%; background:var(--accent); border-radius:100px; transition:width .4s ease; }
-
-    /* SECTION BADGE */
     .section-badge { display:inline-flex; align-items:center; gap:8px; background:var(--surface2); border:1px solid var(--border); border-radius:100px; padding:6px 14px; font-size:12px; font-weight:600; color:var(--muted); margin-bottom:16px; }
     .section-badge.partA { background:#eff6ff; border-color:#bfdbfe; color:var(--accent); }
     .section-badge.partB { background:#f0fdf4; border-color:#bbf7d0; color:var(--accent2); }
-
-    /* QUESTION CARD */
     .q-text { font-size:16px; font-weight:500; line-height:1.6; margin-bottom:20px; color:var(--text); }
-
-    /* OPTIONS */
     .options { display:flex; flex-direction:column; gap:10px; margin-bottom:24px; }
     .option { display:flex; align-items:flex-start; gap:12px; padding:13px 16px; border:1.5px solid var(--border); border-radius:12px; cursor:pointer; transition:all .18s; background:var(--surface2); }
     .option:hover { border-color:var(--accent); background:#eff6ff; }
@@ -90,33 +69,23 @@
     .option.selected .opt-key { background:var(--accent); color:#fff; border-color:var(--accent); }
     .opt-key { font-family:'Syne',sans-serif; font-weight:700; font-size:13px; width:30px; height:30px; border-radius:8px; border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:all .18s; background:#fff; }
     .opt-text { font-size:14px; line-height:1.5; padding-top:5px; }
-
-    /* NUMERIC ANSWER */
     .answer-note { font-size:12px; color:var(--muted); font-style:italic; background:var(--surface2); border:1px solid var(--border); border-radius:8px; padding:8px 12px; margin-bottom:12px; }
     .numeric-wrap { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:24px; }
     .numeric-label { font-size:13px; font-weight:600; color:var(--muted); white-space:nowrap; }
     .numeric-input { font-family:'Syne',sans-serif; font-size:20px; font-weight:700; width:160px; padding:12px 16px; border:2px solid var(--border); border-radius:10px; outline:none; text-align:center; background:var(--surface2); color:var(--text); transition:border-color .2s; }
     .numeric-input:focus { border-color:var(--accent); background:#fff; }
     .unit-label { font-size:14px; color:var(--muted); font-weight:600; }
-
-    /* NOTEBOOK WARNING */
     .notebook-warn { display:flex; gap:12px; align-items:flex-start; background:#fffbeb; border:1px solid #fde68a; border-radius:12px; padding:16px; margin-bottom:20px; }
     .notebook-warn .nw-icon { font-size:22px; flex-shrink:0; }
     .notebook-warn .nw-text { font-size:13px; color:#92400e; line-height:1.6; }
     .notebook-warn .nw-text strong { color:#78350f; }
-
-    /* NEXT BUTTON */
     .btn-next { font-family:'Syne',sans-serif; font-size:15px; font-weight:700; background:var(--accent); color:#fff; border:none; border-radius:12px; padding:14px 40px; cursor:pointer; transition:opacity .2s, transform .15s; }
     .btn-next:hover    { opacity:.88; transform:translateY(-1px); }
     .btn-next:disabled { opacity:.35; cursor:not-allowed; transform:none; }
-
-    /* SUBMIT */
     .btn-submit { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; background:var(--accent2); color:#fff; border:none; border-radius:12px; padding:16px 48px; cursor:pointer; transition:opacity .2s, transform .15s; width:100%; }
     .btn-submit:hover    { opacity:.88; transform:translateY(-1px); }
     .btn-submit:disabled { opacity:.4; cursor:not-allowed; transform:none; }
     .submit-note { font-size:12px; color:var(--muted); text-align:center; margin-top:10px; }
-
-    /* OVERLAY */
     #overlay { display:none; position:fixed; inset:0; z-index:999; background:rgba(17,24,39,0.85); backdrop-filter:blur(10px); align-items:center; justify-content:center; }
     #overlay.show { display:flex; }
     .overlay-card { background:#fff; border-radius:20px; padding:40px 36px; max-width:420px; width:90%; text-align:center; box-shadow:0 24px 80px rgba(0,0,0,0.25); animation:slideUp .3s ease; }
@@ -126,8 +95,6 @@
     .overlay-left  { font-size:13px; color:var(--muted); margin-bottom:20px; }
     .overlay-left strong { color:var(--danger); font-size:17px; }
     .btn-back { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; background:var(--text); color:#fff; border:none; border-radius:10px; padding:13px 32px; cursor:pointer; }
-
-    /* ENDED / SUCCESS */
     #ended, #success { display:none; position:fixed; inset:0; z-index:1000; align-items:center; justify-content:center; flex-direction:column; text-align:center; gap:18px; padding:24px; }
     #ended.show   { display:flex; background:var(--text); }
     #success.show { display:flex; background:#fff; }
@@ -137,12 +104,8 @@
     .success-icon  { font-size:80px; animation:pop .5s ease; }
     .success-title { font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--accent2); animation:fadeIn .5s ease .1s both; }
     .success-sub   { font-size:15px; color:var(--muted); max-width:360px; line-height:1.6; animation:fadeIn .5s ease .2s both; }
-
     footer { text-align:center; padding:14px; font-size:11px; color:var(--muted); border-top:1px solid var(--border); }
-
-    /* HIDDEN */
     .hidden { display:none !important; }
-
     @keyframes blink   { 0%,100%{opacity:1} 50%{opacity:.3} }
     @keyframes slideUp { from{transform:translateY(20px);opacity:0} to{transform:translateY(0);opacity:1} }
     @keyframes fadeIn  { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
@@ -152,7 +115,6 @@
   </style>
 </head>
 <body>
-
 <header>
   <div class="logo">📐 <span>TestGuard</span> · Fizyka</div>
   <div class="header-right">
@@ -160,9 +122,7 @@
     <div class="timer" id="timer">40:00</div>
   </div>
 </header>
-
 <main id="mainContent">
-
   <!-- EKRAN STARTOWY -->
   <div id="screenStart">
     <div class="card title-card">
@@ -174,7 +134,6 @@
         <div class="meta-pill">Punkty: <strong>10 pkt</strong></div>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title">📊 Skala ocen</div>
       <div class="scale-grid">
@@ -190,7 +149,6 @@
         <div class="scale-cell"><div class="pts">0–1,5</div><div class="grade">1</div></div>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title">👤 Dane ucznia</div>
       <div class="fields-row">
@@ -206,7 +164,6 @@
       </button>
     </div>
   </div>
-
   <!-- EKRAN PYTANIA -->
   <div id="screenQuestion" class="hidden">
     <div class="progress-wrap">
@@ -216,20 +173,15 @@
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
     </div>
-
     <div class="card slide-in" id="questionCard">
       <div id="sectionBadge" class="section-badge partA">Część A · 0,5 pkt</div>
       <div class="q-text" id="qText"></div>
-
-      <!-- Test options -->
       <div class="options hidden" id="optionsBlock">
         <label class="option" id="opt0" onclick="selectOpt(0,this)"><input type="radio" name="qopt" value="0"/><div class="opt-key">A</div><div class="opt-text" id="optText0"></div></label>
         <label class="option" id="opt1" onclick="selectOpt(1,this)"><input type="radio" name="qopt" value="1"/><div class="opt-key">B</div><div class="opt-text" id="optText1"></div></label>
         <label class="option" id="opt2" onclick="selectOpt(2,this)"><input type="radio" name="qopt" value="2"/><div class="opt-key">C</div><div class="opt-text" id="optText2"></div></label>
         <label class="option" id="opt3" onclick="selectOpt(3,this)"><input type="radio" name="qopt" value="3"/><div class="opt-key">D</div><div class="opt-text" id="optText3"></div></label>
       </div>
-
-      <!-- Numeric input -->
       <div class="hidden" id="numericBlock">
         <div class="notebook-warn">
           <div class="nw-icon">📝</div>
@@ -242,12 +194,10 @@
           <span class="unit-label" id="unitLabel"></span>
         </div>
       </div>
-
       <button class="btn-next" id="btnNext" disabled onclick="nextQuestion()">Dalej →</button>
     </div>
   </div>
-
-  <!-- EKRAN KOŃCOWY (podsumowanie przed wysłaniem) -->
+  <!-- EKRAN KOŃCOWY -->
   <div id="screenSummary" class="hidden">
     <div class="card title-card">
       <div class="subject">✅ Sprawdzian ukończony</div>
@@ -262,11 +212,8 @@
       <div class="submit-note">Po wysłaniu nie możesz wrócić do odpowiedzi.</div>
     </div>
   </div>
-
 </main>
-
 <footer>TestGuard · Ochrona przed ściąganiem · Wszystkie działania są rejestrowane</footer>
-
 <div id="overlay">
   <div class="overlay-card">
     <div class="overlay-icon">⚠️</div>
@@ -276,29 +223,32 @@
     <button class="btn-back" onclick="closeOverlay()">Wróć do sprawdzianu</button>
   </div>
 </div>
-
 <div id="ended">
   <div class="ended-icon">🚫</div>
   <div class="ended-title">Sprawdzian zakończony</div>
   <div class="ended-sub">Zarejestrowano 2 naruszenia: opuszczenie strony.<br>Skontaktuj się z nauczycielem.</div>
 </div>
-
 <div id="success">
   <div class="success-icon">✅</div>
   <div class="success-title">Dziękujemy!</div>
   <div class="success-sub">Twoje odpowiedzi zostały zapisane.<br>Możesz zamknąć tę stronę.</div>
 </div>
-
 <script>
 // ══════════════════════════════════════════════
 //  ⚙️  USTAWIENIA
 // ══════════════════════════════════════════════
 const TEST_MINUTES   = 40;
 const MAX_VIOLATIONS = 2;
-
 // 👇 WSTAW URL Google Apps Script
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxUli3gkryBtfBoKf3zA_5CvZ1MglkS1CBFtiy9pgem0BuB7J9Kw5WNediBBBndFQdyZQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkxTjeT1ZXQDV2IowawCuJcCO2gRaFKl8N1V5UfLGVI7WjG4zCQXwB2ryPI5vy9kRi8w/exec";
+
 // ══════════════════════════════════════════════
+//  🔑  UNIKALNY KLUCZ SESJI
+//  Generowany raz przy załadowaniu strony.
+//  Używany do identyfikacji wiersza w arkuszu
+//  (Google Apps Script musi obsługiwać pole "sessionId").
+// ══════════════════════════════════════════════
+const SESSION_ID = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 
 // ── POMOCNICZE ────────────────────────────────
 function shuffle(arr) {
@@ -309,103 +259,54 @@ function shuffle(arr) {
   }
   return a;
 }
-
 function rnd(min, max, step = 1) {
   const steps = Math.floor((max - min) / step);
   return min + Math.floor(Math.random() * (steps + 1)) * step;
 }
 
-// ── WARIANTY ──────────────────────────────────
-// Pytania testowe: stałe (shufflowane kolejność)
-// Zadania otwarte: liczby generowane losowo przy każdym wejściu
-
+// ── ВАРІАНТИ ──────────────────────────────────
 function buildVariant(id) {
   const testA = [
-    {
-      q: "Samochód porusza się z prędkością v = 72 km/h. Ile to wynosi w m/s?",
-      opts: ["72 m/s", "36 m/s", "20 m/s", "7,2 m/s"], ans: 2
-    },
-    {
-      q: "Zgodnie z pierwszą zasadą dynamiki Newtona, ciało pozostaje w spoczynku lub porusza się ruchem jednostajnym prostoliniowym, gdy:",
-      opts: ["działa na nie siła wypadkowa skierowana w górę.", "nie działa na nie żadna siła lub siły równoważą się.", "jego masa jest bardzo duża.", "porusza się w próżni."], ans: 1
-    },
-    {
-      q: "Na ciało o masie m = 5 kg działa siła wypadkowa F = 20 N. Jakie jest przyspieszenie ciała?",
-      opts: ["100 m/s²", "25 m/s²", "4 m/s²", "0,25 m/s²"], ans: 2
-    },
-    {
-      q: "Wykres zależności drogi od czasu (s-t) dla ruchu jednostajnego prostoliniowego ma postać:",
-      opts: ["paraboli", "prostej poziomej (s = const)", "prostej przechodzącej przez początek układu współrzędnych", "krzywej eksponencjalnej"], ans: 2
-    }
+    { q:"Samochód porusza się z prędkością v = 72 km/h. Ile to wynosi w m/s?", opts:["72 m/s","36 m/s","20 m/s","7,2 m/s"], ans:2 },
+    { q:"Zgodnie z pierwszą zasadą dynamiki Newtona, ciało pozostaje w spoczynku lub porusza się ruchem jednostajnym prostoliniowym, gdy:", opts:["działa na nie siła wypadkowa skierowana w górę.","nie działa na nie żadna siła lub siły równoważą się.","jego masa jest bardzo duża.","porusza się w próżni."], ans:1 },
+    { q:"Na ciało o masie m = 5 kg działa siła wypadkowa F = 20 N. Jakie jest przyspieszenie ciała?", opts:["100 m/s²","25 m/s²","4 m/s²","0,25 m/s²"], ans:2 },
+    { q:"Wykres zależności drogi od czasu (s-t) dla ruchu jednostajnego prostoliniowego ma postać:", opts:["paraboli","prostej poziomej (s = const)","prostej przechodzącej przez początek układu współrzędnych","krzywej eksponencjalnej"], ans:2 }
   ];
-
   const testB = [
-    {
-      q: "Pociąg jedzie z prędkością v = 108 km/h. Ile to wynosi w m/s?",
-      opts: ["108 m/s", "54 m/s", "30 m/s", "10,8 m/s"], ans: 2
-    },
-    {
-      q: "Zgodnie z drugą zasadą dynamiki Newtona, przyspieszenie ciała jest:",
-      opts: ["odwrotnie proporcjonalne do działającej siły.", "proporcjonalne do masy ciała.", "wprost proporcjonalne do siły wypadkowej i odwrotnie proporcjonalne do masy.", "niezależne od masy ciała."], ans: 2
-    },
-    {
-      q: "Na ciało o masie m = 10 kg działa siła wypadkowa F = 30 N. Jakie jest przyspieszenie ciała?",
-      opts: ["300 m/s²", "40 m/s²", "3 m/s²", "0,33 m/s²"], ans: 2
-    },
-    {
-      q: "Wykres zależności prędkości od czasu (v-t) dla ruchu jednostajnie przyspieszonego bez prędkości początkowej ma postać:",
-      opts: ["prostej poziomej", "prostej przechodzącej przez początek układu współrzędnych", "paraboli", "krzywej malejącej"], ans: 1
-    }
+    { q:"Pociąg jedzie z prędkością v = 108 km/h. Ile to wynosi w m/s?", opts:["108 m/s","54 m/s","30 m/s","10,8 m/s"], ans:2 },
+    { q:"Zgodnie z drugą zasadą dynamiki Newtona, przyspieszenie ciała jest:", opts:["odwrotnie proporcjonalne do działającej siły.","proporcjonalne do masy ciała.","wprost proporcjonalne do siły wypadkowej i odwrotnie proporcjonalne do masy.","niezależne od masy ciała."], ans:2 },
+    { q:"Na ciało o masie m = 10 kg działa siła wypadkowa F = 30 N. Jakie jest przyspieszenie ciała?", opts:["300 m/s²","40 m/s²","3 m/s²","0,33 m/s²"], ans:2 },
+    { q:"Wykres zależności prędkości od czasu (v-t) dla ruchu jednostajnie przyspieszonego bez prędkości początkowej ma postać:", opts:["prostej poziomej","prostej przechodzącej przez początek układu współrzędnych","paraboli","krzywej malejącej"], ans:1 }
   ];
-
-  // Zadania z losowymi liczbami
   function makeOpenA() {
-    const v1 = rnd(5, 20, 5);   const t1 = rnd(10, 30, 5);
-    const v0 = 0; const t2 = rnd(4, 12, 2); const v2 = rnd(12, 36, 4);
-    const m1 = rnd(2, 8, 1);   const F1 = rnd(6, 24, 3); const t3 = rnd(2, 5, 1);
-    const h1 = rnd(5, 45, 5);
-
-    const a1 = Math.round((v2 - v0) / t2 * 10) / 10;
-    const a2 = Math.round(F1 / m1 * 10) / 10;
-    const s3 = Math.round(0.5 * a2 * t3 * t3 * 10) / 10;
-    const v4 = Math.round(Math.sqrt(2 * 10 * h1) * 10) / 10;
-
+    const v1=rnd(5,20,5), t1=rnd(10,30,5), v0=0, t2=rnd(4,12,2), v2=rnd(12,36,4);
+    const m1=rnd(2,8,1), F1=rnd(6,24,3), t3=rnd(2,5,1), h1=rnd(5,45,5);
+    const a1=Math.round((v2-v0)/t2*10)/10, a2=Math.round(F1/m1*10)/10;
+    const s3=Math.round(0.5*a2*t3*t3*10)/10, v4=Math.round(Math.sqrt(2*10*h1)*10)/10;
     return [
-      { q: `Rowerzysta jedzie ze stałą prędkością v = ${v1} m/s. Oblicz, jaką drogę pokona w czasie t = ${t1} s.`, unit: "m", ans: [v1 * t1] },
-      { q: `Samochód zaczyna ruch z v₀ = 0 i po czasie t = ${t2} s osiąga prędkość v = ${v2} m/s. Oblicz przyspieszenie.`, unit: "m/s²", ans: [a1] },
-      { q: `Na ciało o masie m = ${m1} kg działa siła F = ${F1} N. Oblicz drogę przebytą w ciągu t = ${t3} s (start ze spoczynku).`, unit: "m", ans: [s3] },
-      { q: `Piłka spada swobodnie z wysokości h = ${h1} m (g = 10 m/s²). Oblicz prędkość tuż przed uderzeniem w ziemię.`, unit: "m/s", ans: [v4] }
+      { q:`Rowerzysta jedzie ze stałą prędkością v = ${v1} m/s. Oblicz, jaką drogę pokona w czasie t = ${t1} s.`, unit:"m", ans:[v1*t1] },
+      { q:`Samochód zaczyna ruch z v₀ = 0 i po czasie t = ${t2} s osiąga prędkość v = ${v2} m/s. Oblicz przyspieszenie.`, unit:"m/s²", ans:[a1] },
+      { q:`Na ciało o masie m = ${m1} kg działa siła F = ${F1} N. Oblicz drogę przebytą w ciągu t = ${t3} s (start ze spoczynku).`, unit:"m", ans:[s3] },
+      { q:`Piłka spada swobodnie z wysokości h = ${h1} m (g = 10 m/s²). Oblicz prędkość tuż przed uderzeniem w ziemię.`, unit:"m/s", ans:[v4] }
     ];
   }
-
   function makeOpenB() {
-    const v1 = rnd(1, 4, 0.5); const t1 = rnd(10, 40, 5);
-    const v2 = rnd(15, 40, 5); const t2 = rnd(5, 15, 5);
-    const m1 = rnd(3, 10, 1);  const F1 = rnd(9, 30, 3); const t3 = rnd(2, 6, 1);
-    const h1 = rnd(20, 80, 5);
-
-    const a1 = Math.round(v2 / t2 * 10) / 10;
-    const a2 = Math.round(F1 / m1 * 10) / 10;
-    const s3 = Math.round(0.5 * a2 * t3 * t3 * 10) / 10;
-    const v4 = Math.round(Math.sqrt(2 * 10 * h1) * 10) / 10;
-
+    const v1=rnd(1,4,0.5), t1=rnd(10,40,5), v2=rnd(15,40,5), t2=rnd(5,15,5);
+    const m1=rnd(3,10,1), F1=rnd(9,30,3), t3=rnd(2,6,1), h1=rnd(20,80,5);
+    const a1=Math.round(v2/t2*10)/10, a2=Math.round(F1/m1*10)/10;
+    const s3=Math.round(0.5*a2*t3*t3*10)/10, v4=Math.round(Math.sqrt(2*10*h1)*10)/10;
     return [
-      { q: `Pieszy idzie ze stałą prędkością v = ${v1} m/s. Oblicz, jaką drogę pokona w czasie t = ${t1} s.`, unit: "m", ans: [v1 * t1] },
-      { q: `Motocykl rozpędza się z v₀ = 0 do v = ${v2} m/s w czasie t = ${t2} s. Oblicz przyspieszenie motocykla.`, unit: "m/s²", ans: [a1] },
-      { q: `Na ciało o masie m = ${m1} kg działa siła F = ${F1} N. Oblicz drogę przebytą w ciągu t = ${t3} s (start ze spoczynku).`, unit: "m", ans: [s3] },
-      { q: `Kamień spada swobodnie z wysokości h = ${h1} m (g = 10 m/s²). Oblicz prędkość tuż przed uderzeniem w ziemię.`, unit: "m/s", ans: [v4] }
+      { q:`Pieszy idzie ze stałą prędkością v = ${v1} m/s. Oblicz, jaką drogę pokona w czasie t = ${t1} s.`, unit:"m", ans:[v1*t1] },
+      { q:`Motocykl rozpędza się z v₀ = 0 do v = ${v2} m/s w czasie t = ${t2} s. Oblicz przyspieszenie motocykla.`, unit:"m/s²", ans:[a1] },
+      { q:`Na ciało o masie m = ${m1} kg działa siła F = ${F1} N. Oblicz drogę przebytą w ciągu t = ${t3} s (start ze spoczynku).`, unit:"m", ans:[s3] },
+      { q:`Kamień spada swobodnie z wysokości h = ${h1} m (g = 10 m/s²). Oblicz prędkość tuż przed uderzeniem w ziemię.`, unit:"m/s", ans:[v4] }
     ];
   }
-
-  const testQ  = id === 'B' ? testB : testA;
-  const openQ  = id === 'B' ? makeOpenB() : makeOpenA();
-
-  // Shuffluj testowe, otwarte zachowują kolejność
-  const shuffledTest = shuffle(testQ.map((q, i) => ({ ...q, origIdx: i, part: 'A' })));
-  const openWithPart = openQ.map((q, i) => ({ ...q, origIdx: i, part: 'B' }));
-
-  // Wszystkie pytania razem: najpierw A, potem B
-  return [...shuffledTest, ...openWithPart];
+  const testQ = id==='B' ? testB : testA;
+  const openQ = id==='B' ? makeOpenB() : makeOpenA();
+  const shuffledTest = shuffle(testQ.map((q,i)=>({...q,origIdx:i,part:'A'})));
+  const openWithPart = openQ.map((q,i)=>({...q,origIdx:i,part:'B'}));
+  return [...shuffledTest,...openWithPart];
 }
 
 // ── INIT ──────────────────────────────────────
@@ -415,28 +316,76 @@ document.getElementById('wariantLabel').textContent = 'Wariant ' + wariant;
 
 let allQuestions = [];
 let currentIdx   = 0;
-let answers      = [];   // { answer, answerRaw, part, origIdx }
+let answers      = [];
 let testStarted  = false;
+let startTime    = null;
+
+// ══════════════════════════════════════════════
+//  📡  ФУНКЦІЯ ВІДПРАВКИ ДАНИХ
+//  status: '⏳ ROZPOCZĘTO' | '🔄 W TRAKCIE (X/8)' | '✅ UKOŃCZONO' | '⛔ ZABLOKOWANY' | '⌛ CZAS MINĄŁ'
+// ══════════════════════════════════════════════
+function buildPayload(status) {
+  const nazwisko = document.getElementById('nazwisko').value.trim() || '(brak)';
+  const klasa    = document.getElementById('klasa').value.trim()    || '(brak)';
+  const tAns = ['—','—','—','—'];
+  const oAns = ['—','—','—','—'];
+  answers.forEach(a => {
+    if (!a) return;
+    if (a.part==='A') tAns[a.origIdx] = a.answer;
+    if (a.part==='B') oAns[a.origIdx] = a.answer;
+  });
+  let scoreA=0, scoreB=0;
+  answers.forEach(a => {
+    if (!a) return;
+    if (a.part==='A' && a.isCorrect) scoreA += 0.5;
+    if (a.part==='B' && a.isCorrect) scoreB += 2;
+  });
+  const total = Math.round((scoreA+scoreB)*10)/10;
+  const now = new Date();
+  const elapsed = startTime ? Math.floor((Date.now()-startTime)/60000) : 0;
+  return {
+    sessionId: SESSION_ID,          // ← ключ для оновлення рядка в Google Sheets
+    nazwisko, klasa, wariant,
+    data: now.toLocaleDateString('pl-PL') + ' ' + now.toLocaleTimeString('pl-PL'),
+    czas: elapsed + ' min',
+    naruszenia: violations,
+    status,                          // ← поточний стан
+    wynik: ['✅ UKOŃCZONO','⌛ CZAS MINĄŁ'].includes(status) ? (total+' / 10') : '—',
+    t1:tAns[0], t2:tAns[1], t3:tAns[2], t4:tAns[3],
+    o5:oAns[0], o6:oAns[1], o7:oAns[2], o8:oAns[3]
+  };
+}
+
+function sendData(status) {
+  const payload = buildPayload(status);
+  fetch(SCRIPT_URL, {
+    method:'POST', mode:'no-cors',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  }).catch(e => console.warn('Błąd wysyłania:', e));
+}
 
 // ── START ─────────────────────────────────────
 function checkStart() {
   const n = document.getElementById('nazwisko').value.trim();
   const k = document.getElementById('klasa').value.trim();
-  document.getElementById('btnStart').disabled = !(n.length >= 2 && k.length >= 1);
+  document.getElementById('btnStart').disabled = !(n.length>=2 && k.length>=1);
 }
 
 function startTest() {
   const n = document.getElementById('nazwisko').value.trim();
   const k = document.getElementById('klasa').value.trim();
   if (!n || !k) return;
-
   allQuestions = buildVariant(wariant);
   answers = new Array(allQuestions.length).fill(null);
   testStarted = true;
+  startTime   = Date.now();
+
+  // ✅ ПЕРШИЙ ЗАПИС: учень розпочав тест
+  sendData('⏳ ROZPOCZĘTO');
 
   document.getElementById('screenStart').classList.add('hidden');
   document.getElementById('screenQuestion').classList.remove('hidden');
-
   startTimer();
   showQuestion(0);
 }
@@ -446,34 +395,21 @@ function showQuestion(idx) {
   currentIdx = idx;
   const q = allQuestions[idx];
   const total = allQuestions.length;
-
-  // Progress
-  document.getElementById('progressLabel').textContent = `Pytanie ${idx + 1} z ${total}`;
-  document.getElementById('progressPts').textContent   = q.part === 'A' ? '0,5 pkt' : '2 pkt';
-  document.getElementById('progressFill').style.width  = ((idx / total) * 100) + '%';
-
-  // Badge
+  document.getElementById('progressLabel').textContent = `Pytanie ${idx+1} z ${total}`;
+  document.getElementById('progressPts').textContent   = q.part==='A' ? '0,5 pkt' : '2 pkt';
+  document.getElementById('progressFill').style.width  = ((idx/total)*100)+'%';
   const badge = document.getElementById('sectionBadge');
-  badge.className = 'section-badge ' + (q.part === 'A' ? 'partA' : 'partB');
-  badge.textContent = q.part === 'A' ? 'Część A · 0,5 pkt' : 'Część B · 2 pkt';
-
-  // Question text
+  badge.className = 'section-badge '+(q.part==='A'?'partA':'partB');
+  badge.textContent = q.part==='A' ? 'Część A · 0,5 pkt' : 'Część B · 2 pkt';
   document.getElementById('qText').textContent = q.q;
-
-  // Reset next button
   document.getElementById('btnNext').disabled = true;
-  document.getElementById('btnNext').textContent = idx === total - 1 ? 'Zakończ sprawdzian →' : 'Dalej →';
-
-  // Show correct input
+  document.getElementById('btnNext').textContent = idx===total-1 ? 'Zakończ sprawdzian →' : 'Dalej →';
   const optBlock = document.getElementById('optionsBlock');
   const numBlock = document.getElementById('numericBlock');
-
-  if (q.part === 'A') {
+  if (q.part==='A') {
     optBlock.classList.remove('hidden');
     numBlock.classList.add('hidden');
-
-    // Render options — shuffluj odpowiedzi też!
-    const optIndices = shuffle([0, 1, 2, 3]);
+    const optIndices = shuffle([0,1,2,3]);
     optIndices.forEach((origOpt, displayPos) => {
       const letters = ['A','B','C','D'];
       const optEl   = document.getElementById(`opt${displayPos}`);
@@ -481,12 +417,9 @@ function showQuestion(idx) {
       optEl.querySelector('input').checked = false;
       optEl.querySelector('.opt-key').textContent  = letters[displayPos];
       optEl.querySelector('.opt-text').textContent = q.opts[origOpt];
-      optEl.onclick = (function(op, el){ return function(){ selectOpt(op, el, origOpt); }; })(displayPos, optEl);
+      optEl.onclick = (function(op,el){ return function(){ selectOpt(op,el,origOpt); }; })(displayPos,optEl);
     });
-
-    // Store mapping for grading
-    q._optMap = optIndices; // optMap[displayPos] = origOpt
-
+    q._optMap = optIndices;
   } else {
     optBlock.classList.add('hidden');
     numBlock.classList.remove('hidden');
@@ -494,8 +427,6 @@ function showQuestion(idx) {
     document.getElementById('unitLabel').textContent = q.unit;
     document.getElementById('numericAns').value = '';
   }
-
-  // Animate
   const card = document.getElementById('questionCard');
   card.classList.remove('slide-in');
   void card.offsetWidth;
@@ -515,37 +446,36 @@ function selectOpt(displayIdx, el, origOpt) {
 
 function checkNext() {
   const val = document.getElementById('numericAns').value.trim();
-  document.getElementById('btnNext').disabled = (val === '');
+  document.getElementById('btnNext').disabled = (val==='');
 }
 
 function nextQuestion() {
   const q = allQuestions[currentIdx];
-
-  // Save answer
-  if (q.part === 'A') {
+  if (q.part==='A') {
     const letters = ['A','B','C','D'];
     answers[currentIdx] = {
-      part: 'A',
-      origIdx: q.origIdx,
-      answer: letters[selectedOrigOptIdx],          // litera odpowiedzi (oryginalna)
-      isCorrect: selectedOrigOptIdx === q.ans
+      part:'A', origIdx:q.origIdx,
+      answer: letters[selectedOrigOptIdx],
+      isCorrect: selectedOrigOptIdx===q.ans
     };
     selectedOptDisplayIdx = null;
     selectedOrigOptIdx    = null;
   } else {
     const raw = document.getElementById('numericAns').value.trim();
-    const val = parseFloat(raw.replace(',', '.'));
-    const isCorrect = !isNaN(val) && q.ans.some(a => Math.abs(val - a) <= Math.max(0.1, Math.abs(a) * 0.05));
-    answers[currentIdx] = {
-      part: 'B',
-      origIdx: q.origIdx,
-      answer: raw,
-      isCorrect
-    };
+    const val = parseFloat(raw.replace(',','.'));
+    const isCorrect = !isNaN(val) && q.ans.some(a => Math.abs(val-a)<=Math.max(0.1,Math.abs(a)*0.05));
+    answers[currentIdx] = { part:'B', origIdx:q.origIdx, answer:raw, isCorrect };
   }
 
-  if (currentIdx + 1 < allQuestions.length) {
-    showQuestion(currentIdx + 1);
+  // ✅ ПІСЛЯ КОЖНОГО ПИТАННЯ: оновлення запису в таблиці
+  const answered   = answers.filter(Boolean).length;
+  const totalQ     = allQuestions.length;
+  const isLastQ    = currentIdx+1 >= totalQ;
+
+  if (!isLastQ) {
+    // Відправляємо проміжний статус — не чекаємо відповіді (fire-and-forget)
+    sendData(`🔄 W TRAKCIE (${answered}/${totalQ})`);
+    showQuestion(currentIdx+1);
   } else {
     showSummary();
   }
@@ -555,14 +485,18 @@ function nextQuestion() {
 function showSummary() {
   document.getElementById('screenQuestion').classList.add('hidden');
   document.getElementById('screenSummary').classList.remove('hidden');
-
-  let scoreA = 0, scoreB = 0;
+  let scoreA=0, scoreB=0;
   answers.forEach(a => {
     if (!a) return;
-    if (a.part === 'A' && a.isCorrect) scoreA += 0.5;
-    if (a.part === 'B' && a.isCorrect) scoreB += 2;
+    if (a.part==='A' && a.isCorrect) scoreA += 0.5;
+    if (a.part==='B' && a.isCorrect) scoreB += 2;
   });
-  const total = Math.round((scoreA + scoreB) * 10) / 10;
+  const total = Math.round((scoreA+scoreB)*10)/10;
+
+  // ✅ ВІДПРАВЛЯЄМО: учень дійшов до екрану підсумку (ще не натиснув "Wyślij")
+  // Статус "UKOŃCZONO" — тільки після натискання кнопки "Wyślij".
+  // Тут відмічаємо що тест пройдено, але результат ще не офіційно відправлено.
+  sendData(`📋 PODSUMOWANIE — czeka na wysłanie`);
 
   const summaryEl = document.getElementById('summaryContent');
   summaryEl.innerHTML = `
@@ -585,120 +519,69 @@ function showSummary() {
 }
 
 // ── TIMER ─────────────────────────────────────
-let seconds = TEST_MINUTES * 60, ended = false, timerInterval;
-
+let seconds=TEST_MINUTES*60, ended=false, timerInterval;
 function startTimer() {
   updateTimer();
-  timerInterval = setInterval(updateTimer, 1000);
+  timerInterval = setInterval(updateTimer,1000);
 }
-
 function updateTimer() {
-  const m = String(Math.floor(seconds/60)).padStart(2,'0');
-  const s = String(seconds%60).padStart(2,'0');
-  const el = document.getElementById('timer');
-  el.textContent = m+':'+s;
-  el.className = 'timer';
-  if (seconds <= 60)       el.classList.add('danger');
-  else if (seconds <= 300) el.classList.add('warn');
-  if (seconds <= 0) { clearInterval(timerInterval); submitTest(true); }
+  const m=String(Math.floor(seconds/60)).padStart(2,'0');
+  const s=String(seconds%60).padStart(2,'0');
+  const el=document.getElementById('timer');
+  el.textContent=m+':'+s;
+  el.className='timer';
+  if (seconds<=60)       el.classList.add('danger');
+  else if (seconds<=300) el.classList.add('warn');
+  if (seconds<=0) { clearInterval(timerInterval); submitTest(true); }
   seconds--;
 }
 
 // ── ANTI-CHEAT ────────────────────────────────
-let violations = 0, lastViolation = 0;
-
-document.addEventListener('visibilitychange', () => { if (document.hidden && !ended && testStarted) recordViolation(); });
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('keydown', e => {
+let violations=0, lastViolation=0;
+document.addEventListener('visibilitychange',()=>{ if (document.hidden && !ended && testStarted) recordViolation(); });
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{
   if (e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key))||(e.ctrlKey&&e.key==='U')) e.preventDefault();
 });
 
 function recordViolation() {
-  const now = Date.now();
-  if (now - lastViolation < 2000) return;
-  lastViolation = now;
+  const now=Date.now();
+  if (now-lastViolation<2000) return;
+  lastViolation=now;
   violations++;
-  document.getElementById('vCount').textContent = violations;
-  if (violations >= MAX_VIOLATIONS) endTest();
-  else { document.getElementById('attemptsLeft').textContent = MAX_VIOLATIONS - violations; document.getElementById('overlay').classList.add('show'); }
+  document.getElementById('vCount').textContent=violations;
+  if (violations>=MAX_VIOLATIONS) endTest();
+  else {
+    document.getElementById('attemptsLeft').textContent=MAX_VIOLATIONS-violations;
+    document.getElementById('overlay').classList.add('show');
+    // Відмічаємо порушення в таблиці одразу
+    const answered=answers.filter(Boolean).length;
+    const totalQ=allQuestions.length;
+    sendData(`⚠️ NARUSZENIE ${violations} — w trakcie (${answered}/${totalQ})`);
+  }
 }
 function closeOverlay() { document.getElementById('overlay').classList.remove('show'); }
+
 function endTest() {
-  ended = true; clearInterval(timerInterval);
+  ended=true; clearInterval(timerInterval);
   document.getElementById('overlay').classList.remove('show');
   document.getElementById('ended').classList.add('show');
-
-  // Відправити дані з позначкою ZABLOKOWANY
-  const nazwisko = document.getElementById('nazwisko').value.trim();
-  const klasa    = document.getElementById('klasa').value.trim();
-
-  const tAns = ['—','—','—','—'];
-  const oAns = ['—','—','—','—'];
-  answers.forEach(a => {
-    if (!a) return;
-    if (a.part === 'A') tAns[a.origIdx] = a.answer;
-    if (a.part === 'B') oAns[a.origIdx] = a.answer;
-  });
-
-  const now = new Date();
-  const payload = {
-    nazwisko: nazwisko || '(brak)',
-    klasa:    klasa    || '(brak)',
-    wariant,
-    data: now.toLocaleDateString('pl-PL') + ' ' + now.toLocaleTimeString('pl-PL'),
-    czas: Math.floor((TEST_MINUTES*60 - seconds) / 60) + ' min',
-    naruszenia: violations,
-    wynik: '⛔ ZABLOKOWANY',
-    t1: tAns[0], t2: tAns[1], t3: tAns[2], t4: tAns[3],
-    o5: oAns[0], o6: oAns[1], o7: oAns[2], o8: oAns[3]
-  };
-
-  fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
-    .catch(e => console.warn(e));
+  sendData('⛔ ZABLOKOWANY');
 }
 
 // ── SUBMIT ────────────────────────────────────
-async function submitTest(auto = false) {
-  const nazwisko = document.getElementById('nazwisko').value.trim();
-  const klasa    = document.getElementById('klasa').value.trim();
-
-  // Collect answers by original index
-  const tAns = ['—','—','—','—'];
-  const oAns = ['—','—','—','—'];
-
-  answers.forEach(a => {
-    if (!a) return;
-    if (a.part === 'A') tAns[a.origIdx] = a.answer;
-    if (a.part === 'B') oAns[a.origIdx] = a.answer;
-  });
-
-  let scoreA = 0, scoreB = 0;
-  answers.forEach(a => {
-    if (!a) return;
-    if (a.part === 'A' && a.isCorrect) scoreA += 0.5;
-    if (a.part === 'B' && a.isCorrect) scoreB += 2;
-  });
-  const total = Math.round((scoreA + scoreB) * 10) / 10;
-
-  const now = new Date();
-  const payload = {
-    nazwisko, klasa, wariant,
-    data: now.toLocaleDateString('pl-PL') + ' ' + now.toLocaleTimeString('pl-PL'),
-    czas: Math.floor((TEST_MINUTES*60 - seconds) / 60) + ' min',
-    naruszenia: violations,
-    wynik: total + ' / 10',
-    t1: tAns[0], t2: tAns[1], t3: tAns[2], t4: tAns[3],
-    o5: oAns[0], o6: oAns[1], o7: oAns[2], o8: oAns[3]
-  };
-
-  document.getElementById('btnSubmit').disabled = true;
-  document.getElementById('btnText').textContent = 'Wysyłanie...';
-
+async function submitTest(auto=false) {
+  document.getElementById('btnSubmit').disabled=true;
+  document.getElementById('btnText').textContent='Wysyłanie...';
+  const status = auto ? '⌛ CZAS MINĄŁ' : '✅ UKOŃCZONO';
   try {
-    await fetch(SCRIPT_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+    await fetch(SCRIPT_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(buildPayload(status))
+    });
   } catch(e) { console.warn(e); }
-
-  ended = true;
+  ended=true;
   clearInterval(timerInterval);
   document.getElementById('success').classList.add('show');
 }
