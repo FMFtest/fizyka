@@ -579,7 +579,7 @@ function autoTimeEnd() {
 // ── ANTI-CHEAT ────────────────────────────────
 
 let violations=0, lastViolation=0;
-document.addEventListener('visibilitychange',()=>{
+//document.addEventListener('visibilitychange',()=>{
 
   if (document.hidden && !ended && testStarted) recordViolation();
 });
